@@ -5,4 +5,5 @@ fun main(args:Array<String>) {
   nullables.main();
   loops.main();
   collections.main()
+  idioms.main()
 }
