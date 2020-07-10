@@ -1,5 +1,7 @@
 package idioms
 
+import java.io.File
+import java.lang.Exception
 import java.math.BigDecimal
 
 /**
@@ -54,4 +56,21 @@ fun main() {
 
     println(MySingleton)
     println(MySingleton)
+
+    // if not null shorthannd
+    val files = File("Test").listFiles()
+    println("Files: " + files?.size)
+
+    // if null else shorthannd
+    val files2 = File("Test").listFiles()
+    println(files2?.size ?: "empty")
+
+    try{
+        // Executing a statement if null
+        val email = files2?.size ?: throw IllegalStateException("Files2 is missing!")
+    }catch(e:Exception){
+        println(e.message)
+    }
+
+
 }

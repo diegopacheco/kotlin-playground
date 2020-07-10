@@ -12,4 +12,7 @@ fun main():Unit {
     // String template
     println(" Variables :: a ${a} b ${b} c ${c}")
     println(" Variables :: x ${x}")
+
+    val creditCardNumber = 1234_5678_9012_3456L
+    println(creditCardNumber)
 }

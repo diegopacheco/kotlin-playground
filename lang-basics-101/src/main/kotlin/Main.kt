@@ -6,4 +6,5 @@ fun main(args:Array<String>) {
   loops.main();
   collections.main()
   idioms.main()
+  oop.main()
 }

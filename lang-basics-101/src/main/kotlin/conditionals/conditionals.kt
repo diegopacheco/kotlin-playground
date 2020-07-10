@@ -23,8 +23,28 @@ fun whenExpressions():Unit{
     println("When Expressions == Describe ${describe(1)}")
 }
 
+fun ifExpression(param: Int):String {
+    val result = if (param == 1) {
+        "one"
+    } else if (param == 2) {
+        "two"
+    } else {
+        "three"
+    }
+    return result
+}
+
+fun transform(color: String): Int = when (color) {
+    "Red" -> 0
+    "Green" -> 1
+    "Blue" -> 2
+    else -> throw IllegalArgumentException("Invalid color param value")
+}
+
 fun main():Unit{
     println("Conditional maxOf ${maxOf(1,3)}")
     println("Conditional maxOfV2 ${maxOfV2(1,3)}")
     whenExpressions()
+    println(ifExpression(1))
+    println("Transform: ${transform("Red")}")
 }
