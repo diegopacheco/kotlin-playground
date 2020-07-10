@@ -7,4 +7,5 @@ fun main(args:Array<String>) {
   collections.main()
   idioms.main()
   oop.main()
+  lambdas.main()
 }
