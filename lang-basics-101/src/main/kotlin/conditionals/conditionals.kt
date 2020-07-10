@@ -41,10 +41,17 @@ fun transform(color: String): Int = when (color) {
     else -> throw IllegalArgumentException("Invalid color param value")
 }
 
+fun arraysFunc(){
+    val x: IntArray = intArrayOf(1, 2, 3)
+    x[0] = x[1] + x[2]
+    x.forEach { print(it) }
+}
+
 fun main():Unit{
     println("Conditional maxOf ${maxOf(1,3)}")
     println("Conditional maxOfV2 ${maxOfV2(1,3)}")
     whenExpressions()
     println(ifExpression(1))
     println("Transform: ${transform("Red")}")
+    arraysFunc()
 }

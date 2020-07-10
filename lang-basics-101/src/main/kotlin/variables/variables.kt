@@ -15,4 +15,25 @@ fun main():Unit {
 
     val creditCardNumber = 1234_5678_9012_3456L
     println(creditCardNumber)
+
+    val text = """
+    for (c in "foo")
+        print(c)
+    """
+    println(text)
+
+    val textV2 = """
+    |Tell me and I forget.
+    |Teach me and I remember.
+    |Involve me and I learn.
+    |(Benjamin Franklin)
+    """.trimMargin()
+    println(textV2)
+
+    val price = """
+    ${'$'}9.99
+    """
+    println(price)
+
+
 }
