@@ -1,11 +1,22 @@
 package idioms
 
+import java.math.BigDecimal
+
 /**
  * Getters, Setters, hasCode, toString, copy, Equals
  */
 data class Person(val name: String, val email: String)
 
+fun calcTaxes(): BigDecimal = TODO("Waiting for feedback from accounting")
+
+object MySingleton {
+    val name = "Name"
+}
+
 fun main() {
+    // would throw: kotlin.NotImplementedError: An operation is not implemented: Waiting for feedback from accounting
+    // calcTaxes()
+
     val p = Person("Diego","diego.pacheco.it@gmail.com")
     println(p)
     println(p.email)
@@ -41,4 +52,6 @@ fun main() {
     fun String.to42():String = "Forget original string: 42"
     println("Convert this to camelcase".to42())
 
+    println(MySingleton)
+    println(MySingleton)
 }
