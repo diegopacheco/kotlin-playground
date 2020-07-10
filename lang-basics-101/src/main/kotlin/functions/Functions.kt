@@ -14,10 +14,15 @@ fun fooDefaults(a: Int = 0, b: String = "") {
     println("a = ${a} b = ${b}")
 }
 
+data class AB(val A:String,val B:String)
+fun destructionFun():AB = AB("aaa","bbb")
 
 fun main():Unit {
     println("sumV1 1 +1 = " + sumV1(1,1))
     println("sumV2 1 +1 = " + sumV2(1,1))
     printSumV3(1,1)
     fooDefaults()
+
+    val (A,B) = destructionFun()
+    println("A ${A} B ${B}")
 }
