@@ -8,4 +8,5 @@ fun main(args:Array<String>) {
   idioms.main()
   oop.main()
   lambdas.main()
+  coroutines.main()
 }
