@@ -30,6 +30,18 @@ class Polygon : Shape {
     override var vertexCount: Int = 0  // Can be set to any number later
 }
 
+@Target(AnnotationTarget.CLASS, AnnotationTarget.FUNCTION,
+        AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.EXPRESSION)
+@Retention(AnnotationRetention.SOURCE)
+@MustBeDocumented
+annotation class Fancy
+
+@Fancy class Foo {
+    @Fancy fun baz(@Fancy foo: Int): Int {
+        return (@Fancy 1)
+    }
+}
+
 fun main() {
     val p = Printer()
     with(p){
@@ -66,4 +78,12 @@ fun main() {
     val r = Rectangle()
     var po = Polygon()
     println("Retangle: ${r.vertexCount} Polygon: ${po.vertexCount}")
+
+    data class Counter(val dayIndex: Int) {
+        operator fun plus(increment: Int): Counter {
+            return Counter(dayIndex + increment)
+        }
+    }
+    println("${Counter(2) + 3 }")
+
 }
