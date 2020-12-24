@@ -1,5 +1,4 @@
 import arrow.core.*
-import arrow.core.extensions.*
 import arrow.core.extensions.monoid
 import arrow.core.extensions.semigroup
 
