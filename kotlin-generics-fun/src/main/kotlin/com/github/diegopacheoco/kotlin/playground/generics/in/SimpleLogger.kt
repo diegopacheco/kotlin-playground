@@ -1,4 +1,4 @@
-package com.github.diegopacheoco.kotlin.playground.generics.basic;
+package com.github.diegopacheoco.kotlin.playground.generics.`in`;
 
 class SimpleLogger<T> : Logger<T> {
 
