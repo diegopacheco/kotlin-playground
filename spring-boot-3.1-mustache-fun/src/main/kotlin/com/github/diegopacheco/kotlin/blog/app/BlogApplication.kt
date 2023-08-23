@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan("com.github.diegopacheco.kotlin.blog.solution.*")
-class BlogApplication
+open class BlogApplication
 
 fun main(args: Array<String>) {
     runApplication<BlogApplication>(*args)
