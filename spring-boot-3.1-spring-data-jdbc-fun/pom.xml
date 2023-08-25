@@ -59,21 +59,12 @@
                 <version>3.3.0</version>
                 <executions>
                     <execution>
-                        <id>exec</id>
                         <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                         <configuration>
                             <classifier>exec</classifier>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
                             <forceCreation>true</forceCreation>
                             <excludes>
                                 <exclude>application.yml</exclude>
