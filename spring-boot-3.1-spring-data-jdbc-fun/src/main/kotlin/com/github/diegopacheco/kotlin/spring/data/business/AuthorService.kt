@@ -6,12 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class AuthorService(
+open class AuthorService(
     @Autowired val authorRepository: AuthorRepository
 ) {
 
     fun findAll(): MutableIterable<Author?> {
         return authorRepository.findAll()
+    }
+
+    fun save(author:Author): Boolean {
+        authorRepository.save(author)
+        return true
     }
 
 }
