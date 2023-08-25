@@ -19,7 +19,11 @@ class CatsController(
 
     @GetMapping("/cats")
     fun getCatsWisdom(): Mono<ResponseEntity<String>> {
-        return webClient.get().uri(URI("https://catfact.ninja/fact/")).retrieve().toEntity<String>()
+        return webClient.
+               get().
+               uri{ uriBuilder -> uriBuilder.path("/").build() }.
+               retrieve().
+               toEntity<String>()
     }
 
 }
