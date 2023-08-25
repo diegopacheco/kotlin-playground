@@ -6,6 +6,7 @@ import kotlinx.coroutines.test.setMain
 import java.time.Duration
 import java.time.Instant
 
+@OptIn(ExperimentalCoroutinesApi::class,DelicateCoroutinesApi::class)
 class ChannelTest {
 
     private val mainThreadSurrogate = newSingleThreadContext("MainThread")
