@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-open class AuthorService(
+class AuthorService(
     @Autowired val authorRepository: AuthorRepository
 ) {
 

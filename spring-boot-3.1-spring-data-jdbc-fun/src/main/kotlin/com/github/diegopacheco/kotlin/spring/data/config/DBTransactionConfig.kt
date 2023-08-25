@@ -11,7 +11,6 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType
 import org.springframework.transaction.TransactionManager
 import javax.sql.DataSource
 
-
 @Configuration
 open class DBTransactionConfig : AbstractJdbcConfiguration() {
     @Bean

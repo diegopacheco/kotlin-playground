@@ -8,7 +8,7 @@
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
-        <kotlin.version>1.9.0</kotlin.version>
+        <kotlin.version>1.9.10</kotlin.version>
         <kotlin.compiler.jvm.target>19</kotlin.compiler.jvm.target>
         <spring.boot.version>3.1.2</spring.boot.version>
         <start-class>com.github.diegopacheco.kotlin.spring.data.ApplicationMain</start-class>
@@ -20,6 +20,11 @@
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin.version}</version>
                 <extensions>true</extensions>
+                <configuration>
+                    <compilerPlugins>
+                        <plugin>spring</plugin>
+                    </compilerPlugins>
+                </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -188,6 +193,11 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-allopen</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
