@@ -2,6 +2,13 @@
 ```bash
 ./mvnw clean install 
 ```
+### Executable Jar
+```bash
+mvn clean install package
+```
+```bash
+java -jar target/spring-boot-3.1-spring-data-jdbc-fun-1.0-SNAPSHOT-exec.jar
+```
 ### Run
 ```bash
 ./mvnw spring-boot:run
