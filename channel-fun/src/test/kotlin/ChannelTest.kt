@@ -1,29 +1,30 @@
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.junit.jupiter.api.Test
 import kotlinx.coroutines.*
+import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
+import java.time.Duration
+import java.time.Instant
 
 class ChannelTest {
 
     private val mainThreadSurrogate = newSingleThreadContext("MainThread")
 
     @Test
-    fun channelTestSimple() {
+    fun channelTestSimple() = runTest {
         Dispatchers.setMain(mainThreadSurrogate)
-        runBlocking<Unit> {
-            launch {
-                withContext(Dispatchers.Default) {
-                    val ss: SquaresService = SquaresService()
-                    val numbers = ss.produceNumbers()
-                    val squares = ss.square(numbers)
-                    repeat(5) {
-                        println(squares.receive())
-                    }
-                    println("Done!")
-                }
+        launch(Dispatchers.Main) {
+            val volume = 10_000
+            val start:Instant = Instant.now()
+            val ss: SquaresService = SquaresService()
+            val numbers = ss.produceNumbers()
+            val squares = ss.square(numbers)
+            repeat(volume) {
+                println(squares.receive())
             }
+            val end:Instant = Instant.now()
+            println("[${volume}] Execution time in : ${Duration.between(start,end).toMillis()} ms")
         }
+
     }
-    //
 }
