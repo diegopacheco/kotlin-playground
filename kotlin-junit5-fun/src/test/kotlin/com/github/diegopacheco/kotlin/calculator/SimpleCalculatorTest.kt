@@ -8,7 +8,7 @@ import org.junit.jupiter.api.TestInstance
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SimpleCalculatorTest {
 
-    var calculator:Calculator? = null
+    private lateinit var calculator:Calculator
 
     @BeforeAll
     fun setup() {
