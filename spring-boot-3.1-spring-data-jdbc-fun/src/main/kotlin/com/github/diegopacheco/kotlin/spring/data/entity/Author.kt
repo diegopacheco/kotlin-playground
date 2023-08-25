@@ -6,7 +6,7 @@ import java.util.UUID
 
 @Table
 data class Author(
-    @Id val id: UUID,
+    @Id var id: UUID?,
     val name: String,
     val lastName: String,
     val book: String

@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
-import java.util.*
 
 @RestController
 class AuthorController(
@@ -25,6 +24,6 @@ class AuthorController(
                    @PathVariable("book") book:String,
     ) {
         println("Let's save an author! Uhu!!! ")
-        authorService.save(Author(UUID.randomUUID(),name,lastName,book))
+        authorService.save(Author(null,name,lastName,book))
     }
 }
