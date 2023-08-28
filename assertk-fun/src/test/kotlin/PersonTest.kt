@@ -1,6 +1,8 @@
 import assertk.assertThat
+import assertk.assertions.hasLength
 import assertk.assertions.isEqualTo
 import assertk.assertions.isGreaterThan
+import assertk.assertions.isNotNull
 import org.junit.jupiter.api.Test
 
 class PersonTest {
@@ -21,4 +23,11 @@ class PersonTest {
     fun testNameProperty() {
         assertThat(person::name).isEqualTo("Bob")
     }
+
+    @Test
+    fun nullTest(){
+        val nullString: String? = "1234"
+        assertThat(nullString).isNotNull().hasLength(4)
+    }
+
 }
