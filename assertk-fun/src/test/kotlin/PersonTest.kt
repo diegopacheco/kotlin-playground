@@ -1,3 +1,4 @@
+import assertk.Assert
 import assertk.all
 import assertk.assertFailure
 import assertk.assertThat
@@ -57,6 +58,14 @@ class PersonTest {
         assertFailure {
             throw Exception("very wrong")
         }.hasMessage("very wrong")
+    }
+
+    @Test
+    fun testCustom(){
+        fun Assert<Person>.hasAge(expected: Int) {
+            prop(Person::age).isEqualTo(expected)
+        }
+        assertThat(person).hasAge(21)
     }
 
 }
