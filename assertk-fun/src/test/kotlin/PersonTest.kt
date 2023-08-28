@@ -1,4 +1,5 @@
 import assertk.all
+import assertk.assertFailure
 import assertk.assertThat
 import assertk.assertions.*
 import org.junit.jupiter.api.Test
@@ -43,6 +44,19 @@ class PersonTest {
     fun extractDataTest(){
         val person = Person(name="John Doe",age = 22)
         assertThat(person).prop(Person::age).isEqualTo(22)
+    }
+
+    @Test
+    fun testCollections(){
+        assertThat(listOf(1, 2, 3)).index(1).isEqualTo(2)
+        assertThat(mapOf("one" to 1, "two" to 2, "three" to 3)).key("two").isEqualTo(2)
+    }
+
+    @Test
+    fun testExceptions(){
+        assertFailure {
+            throw Exception("very wrong")
+        }.hasMessage("wrong")
     }
 
 }
