@@ -1,8 +1,6 @@
+import assertk.all
 import assertk.assertThat
-import assertk.assertions.hasLength
-import assertk.assertions.isEqualTo
-import assertk.assertions.isGreaterThan
-import assertk.assertions.isNotNull
+import assertk.assertions.*
 import org.junit.jupiter.api.Test
 
 class PersonTest {
@@ -28,6 +26,17 @@ class PersonTest {
     fun nullTest(){
         val nullString: String? = "1234"
         assertThat(nullString).isNotNull().hasLength(4)
+    }
+
+    @Test
+    fun multipleAssertions() {
+        val string = "Test"
+        assertThat(string).all {
+            isNotNull()
+            isNotEmpty()
+            startsWith("T")
+            hasLength(4)
+        }
     }
 
 }
