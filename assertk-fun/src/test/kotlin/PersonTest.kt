@@ -56,7 +56,7 @@ class PersonTest {
     fun testExceptions(){
         assertFailure {
             throw Exception("very wrong")
-        }.hasMessage("wrong")
+        }.hasMessage("very wrong")
     }
 
 }
