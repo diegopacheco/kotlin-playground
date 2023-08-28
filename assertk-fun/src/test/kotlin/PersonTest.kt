@@ -39,4 +39,10 @@ class PersonTest {
         }
     }
 
+    @Test
+    fun extractDataTest(){
+        val person = Person(name="John Doe",age = 22)
+        assertThat(person).prop(Person::age).isEqualTo(22)
+    }
+
 }
