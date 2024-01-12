@@ -1,3 +1,5 @@
-#!/bin/env kscript
+//
+// #!/bin/env kscript
+//
 
 print("Hello, world KTS!")
