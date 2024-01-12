@@ -10,7 +10,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <kotlin.version>1.9.22</kotlin.version>
         <kotlin.compiler.jvmTarget>21</kotlin.compiler.jvmTarget>
-        <start-class>Main</start-class>
+        <start-class>KMain</start-class>
     </properties>
     <build>
         <plugins>
