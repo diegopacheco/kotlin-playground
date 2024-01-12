@@ -8,7 +8,7 @@
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <kotlin.version>1.9.21</kotlin.version>
+        <kotlin.version>1.9.22</kotlin.version>
         <kotlin.compiler.jvmTarget>21</kotlin.compiler.jvmTarget>
         <start-class>Main</start-class>
     </properties>
@@ -152,7 +152,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>Main</mainClass>
+                    <mainClass>KMain</mainClass>
                     <arguments>
                         <release>21</release>
                         <compilerArgs>--enable-preview</compilerArgs>
