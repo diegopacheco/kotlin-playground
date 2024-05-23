@@ -1,4 +1,19 @@
-### Note on Data classes
+### Diego's A note Data classes, copy and immutability
+
+Immutability is desired yes, 100%. However the we need to think about the role of data classes. <BR/>
+We could have 2 ways we can use data classes:   <BR/>
+```
+(A) As replacement for POJOs, therefore classes.
+(B) As replacement for POJOS, but DTOs.
+```
+IMHO the right usage is for (B). Yes we should minimize inheritance and mutability as much as possible. <BR/>
+But you need to ask yourself, are you dealing with a REAL object that has methods and abstract things or is just a DTO?  <BR/>
+IF IS a DTO by nature we should not care much about immutability since the object is just a container is not really different them an enum or old POJO. <BR/>
+Data classes are fine to have `var` therefore be muttable but on the context of a DTO.  <BR/>
+
+`copy` method is useful, but is not different from a getter/setter call. Cloning or deep copying is not different them calling get in one class and set in another. It's a nice syntatic sugar, yes! But we need to understand what this is. Yes makes the code less verbose but really is not different them old `binders` where we would have a class copy form one claass (source) to another (destination) and there are many frameworks that did this in the past in java like Orika, Dozer, ModelMapper, etc. <BR/> 
+
+### Diego's Note on Data classes
 
 * One important thing to always keep in mind, kotlin is closed by default which means
   * Everything is immutable
