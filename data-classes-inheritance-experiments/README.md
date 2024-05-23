@@ -1,5 +1,8 @@
 ### Note on Data classes
 
+* One important thing to always keep in mind, kotlin is closed by default which means
+  * Everything is immutable
+  * Everything is final (classes and properties)
 * Data classes don't play well with inheritance.
 * Data classes are final by default.
 * Data classes can't be abstract.
