@@ -16,6 +16,17 @@ open class Base(
     // ....
 }
 ```
+* Can we make immutable and at the same time have inheritance? Yes.
+  * Step 1: Have an open class with open properties.
+  * Step 2: Have a data class that extends the open class.
+  * Step 3: The data class need to override the properties.
+* Look the code files: `Base.kt` and `Data.kt`
+* Check the test for evidence `PersonTest.kt`
+
+Test output:
+```
+ Base.name John  Base.age 55  Base.email john@john.com  Base.version 1  Base.hidden true  Person.address NYC  Person.taxPayerNumber 123  Person.country  
+```
 
 ### Build
 ```bash
