@@ -31,6 +31,13 @@ Test output:
  Base.name John  Base.age 55  Base.email john@john.com  Base.version 1  Base.hidden true  Person.address NYC  Person.taxPayerNumber 123  Person.country  
 ```
 
+### References
+
+* https://stackoverflow.com/questions/44391468/can-kotlin-data-class-have-more-than-one-constructor
+* https://stackoverflow.com/questions/26444145/extend-data-class-in-kotlin
+* https://stackoverflow.com/questions/47359496/kotlin-data-class-copy-method-not-deep-copying-all-members
+* https://kotlinlang.org/docs/data-classes.html#copying
+
 ### Build
 ```bash
 ./mvnw clean install 
