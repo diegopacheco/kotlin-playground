@@ -8,4 +8,17 @@ fun main(){
 
   println("** Type Check With Local Operator")
   signalCheck(SuperPostponed())
+
+  println("** Inline Functions")
+  runProcessor()
+
+  println("** Properties with function types")
+  Holder( { println("Hello World") } )
+
+  println("** Exceptions")
+  testString()
+
+  println("** Increment and Decrement Operators")
+  runCode(SimpleRho())
 }
+
