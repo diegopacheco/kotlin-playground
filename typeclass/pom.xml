@@ -21,8 +21,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <jvmTarget>${kotlin.compiler.jvmTarget}</jvmTarget>
-                    <compilerPlugins>
-                    </compilerPlugins>
+                    <args>
+                        <arg>-Xcontext-parameters</arg>
+                    </args>
                 </configuration>
                 <executions>
                     <execution>
