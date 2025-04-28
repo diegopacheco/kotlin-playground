@@ -1,5 +1,7 @@
+import EcommerceV4.process
 import arrow.core.Either
 import arrow.core.EitherNel
+import arrow.core.raise.either
 
 object Storage {
     val users = listOf("user-1234", "user-444")
@@ -111,3 +113,43 @@ object EcommerceV3 {
             ) { a, _ -> a }
     }
 }
+
+object EcommerceV4{
+    data class ValidationError(val message: String)
+    data class CreatePortfolio(
+        val userId: String,
+        val amount: Double
+    )
+    data class ChangePortfolio(
+        val userId: String,
+        val stock: String,
+        val quantity: Int
+    )
+    interface Validator<T>{
+        fun check(item: T): EitherNel<ValidationError,T>
+    }
+
+    val createPortfolioValidator = object : Validator<CreatePortfolio> {
+        override fun check(item: CreatePortfolio): EitherNel<ValidationError, CreatePortfolio> =
+            EitherNel.zipOrAccumulate(
+                if (!Storage.users.contains(item.userId)) Either.Left(ValidationError("Error users ${item.userId} not found"))
+                else Either.Right(item),
+                if (item.amount <= 0.0) Either.Left(ValidationError("Error amount ${item.amount} is negative"))
+                else Either.Right(item)
+            ) { a, _ -> a }
+    }
+
+    fun <T> process(event: T, validator: Validator<T>) = either {
+        val validated: T = validator.check(event).bind()
+
+        println("Event $event processed successfully")
+    }.onLeft { errors -> println("Found Validation errors ${errors.map { it.message }}") }
+
+    @JvmStatic
+    fun main(args: Array<String>){
+        process(EcommerceV4.CreatePortfolio("user-1234", -10.0), EcommerceV4.createPortfolioValidator)
+        process(EcommerceV4.CreatePortfolio("user-1111", 10.0), EcommerceV4.createPortfolioValidator)
+    }
+
+}
+
