@@ -83,3 +83,19 @@ object EcommerceV2 {
         }
     }
 }
+
+object EcommerceV3{
+    data class ValidationError(val message:String)
+    interface Validatable<T>{
+        fun check(): Either<ValidationError,T>
+    }
+
+    data class CreatePortfolio(
+        val userid:String,
+        val amount: Double
+    ): Validatable<CreatePortfolio>{
+        override fun check(): Either<ValidationError, CreatePortfolio> {
+            TODO("Not yet implemented")
+        }
+    }
+}
