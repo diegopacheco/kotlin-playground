@@ -2,6 +2,7 @@ import arrow.core.Either
 import arrow.core.NonEmptyList
 import arrow.core.raise.either
 import arrow.core.EitherNel
+import arrow.core.raise.Raise
 
 object Storage {
     val users = listOf("user-1234", "user-444")
@@ -170,7 +171,7 @@ object EcommerceV5 {
     }
 
     context(scope: ValidatorScope<T>)
-    fun <T> process(event: T): Either<NonEmptyList<ValidationError>, Unit> = either {
+    fun <T> process(event: T) = either {
         val validated = event.check().bind()
 
         println("Event $validated processed successfully")
