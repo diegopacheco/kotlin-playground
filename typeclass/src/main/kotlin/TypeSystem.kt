@@ -170,20 +170,26 @@ object EcommerceV5 {
             ) { a, _ -> a }
     }
 
-    context(scope: ValidatorScope<T>)
-    fun <T> process(event: T) = either {
-        val validated = event.check().bind()
-
-        println("Event $validated processed successfully")
-    }.onLeft { errors ->
-        println("Found Validation errors ${errors.map { it.message }}")
-    }
+    fun <T> process(event: T, scope: ValidatorScope<T>):
+            Either<NonEmptyList<ValidationError>, Unit> =
+        with(scope) {
+            with(event) {
+                check().map { validated ->
+                    println("Event $validated processed successfully")
+                }
+            }
+        }
 
     @JvmStatic
     fun main(args: Array<String>) {
-        with(createPortfolioValidator) {
-            process(CreatePortfolio("user-1234", -10.0))
-            process(CreatePortfolio("user-1111", 10.0))
+        val result1 = process(CreatePortfolio("user-1234", -10.0), createPortfolioValidator)
+        result1.mapLeft { errors ->
+            println("Found Validation errors ${errors.map { error -> error.message }}")
+        }
+
+        val result2 = process(CreatePortfolio("user-1111", 10.0), createPortfolioValidator)
+        result2.mapLeft { errors ->
+            println("Found Validation errors ${errors.map { error -> error.message }}")
         }
     }
-}}
+}
