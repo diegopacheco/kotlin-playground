@@ -1,9 +1,7 @@
 import arrow.core.Either
-import arrow.core.EitherNel
 import arrow.core.NonEmptyList
 import arrow.core.raise.either
-import arrow.core.raise.Raise
-import arrow.core.nel
+import arrow.core.EitherNel
 
 object Storage {
     val users = listOf("user-1234", "user-444")
@@ -157,31 +155,34 @@ object EcommerceV5 {
     )
 
     interface ValidatorScope<T> {
-        fun T.check(): Either<NonEmptyList<ValidationError>, T>
+        fun T.check(): EitherNel<ValidationError, T>
     }
 
     val createPortfolioValidator = object : ValidatorScope<CreatePortfolio> {
-        override fun CreatePortfolio.check(): Either<NonEmptyList<ValidationError>, CreatePortfolio> =
-            if (!Storage.users.contains(userId))
-                Either.Left(ValidationError("Error users $userId not found").nel())
-            else if (amount <= 0.0)
-                Either.Left(ValidationError("Error amount $amount is negative").nel())
-            else
-                Either.Right(this)
+        override fun CreatePortfolio.check(): EitherNel<ValidationError, CreatePortfolio> =
+            EitherNel.zipOrAccumulate(
+                if (!Storage.users.contains(userId)) Either.Left(ValidationError("Error users $userId not found"))
+                else Either.Right(this),
+
+                if (amount <= 0.0) Either.Left(ValidationError("Error amount $amount is negative"))
+                else Either.Right(this)
+            ) { a, _ -> a }
     }
 
     context(scope: ValidatorScope<T>)
-    fun <T> process(event: T): Either<NonEmptyList<ValidationError>, Unit> =
-        event.check().map { validated ->
-            println("Event $validated processed successfully")
-        }.onLeft { errors ->
-            println("Found Validation errors ${errors.map { error -> error.message }}")
-        }
+    fun <T> process(event: T): Either<NonEmptyList<ValidationError>, Unit> = either {
+        val validated = event.check().bind()
 
+        println("Event $validated processed successfully")
+    }.onLeft { errors ->
+        println("Found Validation errors ${errors.map { it.message }}")
+    }
+
+    @JvmStatic
     fun main(args: Array<String>) {
         with(createPortfolioValidator) {
             process(CreatePortfolio("user-1234", -10.0))
             process(CreatePortfolio("user-1111", 10.0))
         }
     }
-}
+}}
