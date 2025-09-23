@@ -4,6 +4,8 @@
 # InteliJ idea
 *.iml
 
+.DS_Store
+
 .idea/
 target/
 
