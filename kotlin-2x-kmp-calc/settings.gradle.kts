@@ -1,0 +1,1 @@
+rootProject.name = "kotlin-2x-kmp-calc"
