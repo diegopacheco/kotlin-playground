@@ -4,6 +4,11 @@ Using KMP Composer.
 
 ## Results
 
-<img src="![KMP_Android.png](KMP_Android.png)
-![KMP_IOS.png](KMP_IOS.png)
-![KMP_WEB.png](KMP_WEB.png)" width="600"  />
+Web <BR/>
+<img src="KMP_WEB.png" width="400"  />
+
+Android <BR/>
+<img src="KMP_Android.png" width="400"  />
+
+IOS <BR/>
+<img src="KMP_Android.png" width="400"  />
