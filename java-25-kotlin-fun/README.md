@@ -15,3 +15,14 @@ Kotlin `2.3.0-Beta1` does not support JVM target version `25` YET.
 [ERROR] -> [Help 1]
 [ERROR]
 ```
+
+### You can use JVM 25 but not as target, this works
+
+```xml
+<properties>
+    <maven.compiler.source>25</maven.compiler.source>
+    <maven.compiler.target>24</maven.compiler.target>
+    <kotlin.compiler.jvmTarget>24</kotlin.compiler.jvmTarget>
+    <kotlin.version>2.3.0-Beta1</kotlin.version>
+</properties>
+```
