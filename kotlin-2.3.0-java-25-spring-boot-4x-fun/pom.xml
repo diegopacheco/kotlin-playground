@@ -14,7 +14,7 @@
         <maven.compiler.source>25</maven.compiler.source>
         <maven.compiler.target>25</maven.compiler.target>
         <kotlin.version>2.3.0</kotlin.version>
-        <kotlin.compiler.jvmTarget>23</kotlin.compiler.jvmTarget>
+        <kotlin.compiler.jvmTarget>25</kotlin.compiler.jvmTarget>
         <start-class>com.github.diegopacheco.app.ApplicationKt</start-class>
     </properties>
     <build>
